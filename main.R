@@ -34,7 +34,7 @@ InferenceTheta <- function(x,y,c_q,alpha,B){
   J_21 <- t(J_12)
   J <- rbind(cbind(J_11, J_12), c(J_21, J_22)) 
   
-  C2 <- 0.6  #The range is from 0.4 to 1.2
+  C2 <- 0.4  #The range is from 0.4 to 1.2
   J_inverse_hat <- clime(J,lambda=C2* sqrt(log(p + 1) / n),sigma=TRUE,linsolver="simplex")
   W_hat <- J_inverse_hat$Omega[[1]]
   W_hat <- (W_hat + t(W_hat))/2
@@ -114,7 +114,7 @@ InferenceBeta <- function(x,y,c_q,alpha,B){
   J_21 <- t(J_12)
   J <- rbind(cbind(J_11, J_12), c(J_21, J_22)) 
   
-  C2 <- 0.6  #The range is from 0.4 to 1.2
+  C2 <- 0.4  #The range is from 0.4 to 1.2
   J_inverse_hat <- clime(J,lambda=C2*sqrt(log(p + 1) / n),sigma=TRUE,linsolver="simplex")
   W_hat <- J_inverse_hat$Omega[[1]]
   W_hat <- (W_hat + t(W_hat))/2
@@ -175,6 +175,7 @@ InferenceBeta <- function(x,y,c_q,alpha,B){
   upperbound <- betadebias + SS*Q
   return(list(lowerbound = lowerbound, upperbound = upperbound))
 }
+
 
 
 
